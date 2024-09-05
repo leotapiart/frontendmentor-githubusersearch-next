@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { Space_Grotesk } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,11 +29,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Navbar />
-        {children}
+      <body className={spaceGrotesk.className}>
+        <div className="min-h-screen grid place-content-center">
+          <div className="sm:w-[500px] md:w-[600px]">
+            <header>
+              <Navbar />
+            </header>
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
